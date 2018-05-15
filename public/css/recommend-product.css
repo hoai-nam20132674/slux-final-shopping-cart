@@ -1,0 +1,131 @@
+@import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css);
+.col-item
+{
+    border: 1px solid #E1E1E1;
+    border-radius: 5px;
+    background: #FFF;
+}
+.col-item .photo img
+{
+    margin: 0 auto;
+    width: 100%;
+}
+
+.col-item .info
+{
+    padding: 10px;
+    border-radius: 0 0 5px 5px;
+    margin-top: 1px;
+}
+
+.col-item:hover .info {
+    background-color: #F5F5DC;
+}
+.col-item .price
+{
+    margin-top: 5px;
+}
+
+.col-item .price h5
+{
+    line-height: 20px;
+    margin: 0;
+}
+.col-item .price h5.price-text-color{
+    margin: 0 0 5px 0;
+}
+
+.price-text-color
+{
+    color: #219FD1;
+}
+
+.col-item .info .rating
+{
+    color: #777;
+}
+
+.col-item .rating
+{
+    /*width: 50%;*/
+    float: left;
+    font-size: 17px;
+    text-align: right;
+    line-height: 52px;
+    margin-bottom: 10px;
+    height: 52px;
+}
+
+.col-item .separator
+{
+    border-top: 1px solid #E1E1E1;
+}
+
+.clear-left
+{
+    clear: left;
+}
+
+.col-item .separator p
+{
+    /*line-height: 20px;*/
+    margin-bottom: 0;
+    margin-top: 10px;
+    text-align: center;
+    background: red;
+    font-size: 15px;
+    border-radius: 4px;
+}
+
+.col-item .separator p i
+{
+    margin-right: 5px;
+}
+.col-item .btn-add
+{
+    width: 50%;
+    float: left;
+}
+
+.col-item .btn-add
+{
+    border-right: 1px solid #E1E1E1;
+}
+
+.col-item p.btn-details
+{
+    width: 50%;
+    float: left;
+    background: #2775c5;
+    font-size: 15px;
+    border-radius: 4px;
+    /*padding-left: 10px;*/
+}
+.controls
+{
+    margin-top: 20px;
+}
+[data-slide="prev"]
+{
+    margin-right: 10px;
+}
+.recommend-product h3 {
+    margin: 0px 0px 15px 0px;
+    font-weight: 700;
+    width: 70%;
+    float: left;
+}
+.recommend-product button {
+    width: 100%;
+}
+.recommend-product {
+    position: relative;
+}
+@media screen and (max-width: 768px) {
+    .product-item {
+        margin-bottom: 30px;
+    }
+    .product-item:last-child{
+        margin-bottom: 0px;
+    }
+}
