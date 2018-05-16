@@ -117,14 +117,14 @@
 											<div class="blog-new-item box-shadows">
 												<div class="row"> 
 								                    <div class="col-xs-12 col-sm-12 col-md-12">
-								                        <a href="#">
+								                        <a href="{{url('/'.$blog->url)}}">
 								                            <img src="{{url('/uploads/images/blogs/'.$blog["image"])}}" alt="" class="img-responsive img-box img-thumbnail"> 
 								                        </a>
 								                    </div>
 								                    <br>
 								                    <br>
 								                    <div class="col-xs-12 col-sm-12 col-md-12">
-								                    	<h4><a href="#">{{$blog->title}}</a></h4>
+								                    	<h4><a href="{{url('/'.$blog->url)}}">{{$blog->title}}</a></h4>
 								                        <div class="list-group">
 								                            <div class="list-group-item">
 								                                <div class="row-content">

@@ -164,9 +164,38 @@ class viewController extends Controller
         return redirect()->route('getCart');
         // dd($content);
     }
-    public function updateCartItem($url){
-        $product = Products::where('url',$url)->get()->first();
-        Cart::add(array('id'=>$product->id,'name'=>$product->name,'quantity'=>1,'price'=>$product->price,'attributes'=>array('img'=>$product->image)));
+    public function updateCartAddItem($id){
+        $content = Cart::getContent();
+        $i=0;
+        foreach($content as $item){
+            if($item->id == $id){
+                $i++;
+            }
+        }
+        if($i>0){
+            $product = Products::where('id',$id)->get()->first();
+            Cart::add(array('id'=>$product->id,'name'=>$product->name,'quantity'=>1,'price'=>$product->price,'attributes'=>array('img'=>$product->image)));
+        }
+        else{
+            return redirect()->route('home');
+        }
+    }
+    public function updateCartRemoveItem($id,$quantity){
+        $content = Cart::getContent();
+        $i=0;
+        foreach($content as $item){
+            if($item->id == $id){
+                $i++;
+            }
+        }
+        if($i>0){
+            $array = array();
+            $array[0]=$quantity;
+            Cart::update($id, array('quantity'=>array('relative' => false,'value' => $quantity),));
+        }
+        else{
+            return redirect()->route('home');
+        }
     }
     public function getCart(){
         $contents = Cart::getContent();

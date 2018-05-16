@@ -39,6 +39,8 @@ Route::get('/getProductCategorie/{id}','viewController@getProductCategorie');
 
 Route::get('add-to-cart/{url}',['as'=>'add-to-cart','uses'=>'viewController@addToCart']);
 Route::get('shopping-cart/gio-hang',['as'=>'getCart','uses'=>'viewController@getCart']);
+Route::get('update-cart-add-item/{id}',['as'=>'updateCartAddItem','uses'=>'viewController@updateCartAddItem']);
+Route::get('update-cart-remove-item/{id}/{quantity}',['as'=>'updateCartRemoveItem','uses'=>'viewController@updateCartRemoveItem']);
 
 Route::get('/login/admin-master', ['as'=>'getLogin','uses'=>'Auth\AuthController@getLogin']);
 Route::post('/postLogin', 'Auth\AuthController@postLogin');

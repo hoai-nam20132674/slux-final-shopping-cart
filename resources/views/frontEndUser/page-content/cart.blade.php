@@ -1,8 +1,6 @@
 @extends('frontEndUser.layout.default')
 @section('css')
 <style type="text/css">
-    
-
 	.clearfix {
 	  content: "";
 	  clear: both;	
@@ -110,7 +108,7 @@
 
 	.product img {
 		width: 100%;
-		height: 100%;
+		/*height: 100%;*/
 	}
 
 	.product header, .product .content {
@@ -126,8 +124,8 @@
 		overflow: hidden;
 		padding: 0;
 		position: relative;
-		width: 24%;
-		height: 195px;
+		width: 100%;
+		/*height: 195px;*/
 	}
 
 	.product header:hover img {
@@ -135,7 +133,7 @@
 	}
 
 	.product header:hover h3 {
-		bottom: 73px;
+		bottom: 35px;
 	}
 
 	.product header h3 {
@@ -167,7 +165,7 @@
 		-moz-box-sizing: border-box;
 		height: 140px;
 		padding: 0 20px;
-		width: 75%;
+		width: 100%;
 	}
 
 	.product h1 {
@@ -256,7 +254,7 @@
 	}
 
 	#site-footer {
-		padding: 40px;
+		/*padding: 40px;*/
 	}
 
 	#site-footer h1 {
@@ -366,31 +364,37 @@
 						<div class="row">
 							<section id="cart"> 
 								<article class="product">
-									<header>
-										<a class="remove">
-											<img width="100%" src="{{url('/uploads/images/products/'.$item["attributes"]["img"])}}" alt="">
+									<div class="col-md-12">
+										<div class="col-md-4">
+											<header>
+												<a class="remove">
+													<img width="100%" src="{{url('/uploads/images/products/'.$item["attributes"]["img"])}}" alt="">
 
-											<h3>Remove</h3>
-										</a>
-									</header>
-
-									<div class="content">
-										<h1>{{$item->name}}</h1>
+													<h3>Remove</h3>
+												</a>
+											</header>
+										</div>
+										<div class="col-md-8">
+											<div class="content">
+												<h1>{{$item->name}}</h1>
+											</div>
+										</div>
 									</div>
+									<div class="col-md-12">
+										<footer class="content">
+											<span id="{{$item->id}}" class="qt-minus">-</span>
+											<span class="qt">{{$item->quantity}}</span>
+											<span id="{{$item->id}}" class="qt-plus">+</span>
 
-									<footer class="content">
-										<span class="qt-minus">-</span>
-										<span class="qt">{{$item->quantity}}</span>
-										<span class="qt-plus">+</span>
+											<h2 class="full-price">
+												{{number_format($item->price*$item->quantity,0,",",".")}}
+											</h2>
 
-										<h2 class="full-price">
-											{{number_format($item->price*$item->quantity,0,",",".")}}
-										</h2>
-
-										<h2 class="price">
-											{!!$item->price!!}
-										</h2>
-									</footer>
+											<h2 class="price">
+												{!!$item->price!!}
+											</h2>
+										</footer>
+									</div>
 								</article>
 							</section>
 						</div>
@@ -400,14 +404,14 @@
 								<div class="clearfix">
 									
 									<div class="col-md-6">
-										<h2 class="subtotal">Subtotal: <span>163.96</span>€</h2>
-										<!-- <h3 class="tax">Taxes (5%): <span>8.2</span>€</h3>
-										<h3 class="shipping">Shipping: <span>5.00</span>€</h3> -->
+										<!-- <h2 class="subtotal">Subtotal: <span>0</span>đ</h2> -->
+										<h3 class="tax">Taxes (0%): <span>0</span>đ</h3>
+										<h3 class="shipping">Shipping: <span>0.00</span>đ</h3>
 									</div>
 
 									<div class="col-md-6">
 											<div class="col-md-12">
-												<h1 class="total">Total: <span>{{$total}}</span>€</h1>
+												<h1 class="total">Total: <span>{{$total}}</span>đ</h1>
 											</div>
 											<div class="col-md-12">
 												<a href="{{ URL::previous() }}" class="btn" style="width: 100%;">Tiếp tục mua hàng</a>
@@ -485,7 +489,7 @@ function changeVal(el) {
   var price = parseFloat(el.parent().children(".price").html());
   var eq = Math.round(price * qt * 100) / 100;
   
-  el.parent().children(".full-price").html( eq + "€" );
+  el.parent().children(".full-price").html( eq + "đ" );
   
   changeTotal();			
 }
@@ -499,7 +503,7 @@ function changeTotal() {
   });
   
   price = Math.round(price * 100) / 100;
-  var tax = Math.round(price * 0.05 * 100) / 100
+  var tax =0;
   var shipping = parseFloat($(".shipping span").html());
   var fullPrice = Math.round((price + tax + shipping) *100) / 100;
   
@@ -516,11 +520,11 @@ $(document).ready(function(){
   
   $(".remove").click(function(){
     var el = $(this);
-    el.parent().parent().addClass("removed");
+    el.parent().parent().parent().parent().addClass("removed");
     window.setTimeout(
       function(){
-        el.parent().parent().slideUp('fast', function() { 
-          el.parent().parent().remove(); 
+        el.parent().parent().parent().parent().slideUp('fast', function() { 
+          el.parent().parent().parent().parent().remove(); 
           if($(".product").length == 0) {
             if(check) {
               $("#cart").html("<h1>The shop does not function, yet!</h1><p>If you liked my shopping cart, please take a second and heart this Pen on <a href='https://codepen.io/ziga-miklic/pen/xhpob'>CodePen</a>. Thank you!</p>");
@@ -534,6 +538,13 @@ $(document).ready(function(){
   });
   
   $(".qt-plus").click(function(){
+  	var id = $(this).attr('id');
+  	$.ajax({
+	      type:'GET',
+	      url:'http://localhost:8000/update-cart-add-item/'+id,
+	      cache:false,
+	      data:{"id":id},  
+	   });
     $(this).parent().children(".qt").html(parseInt($(this).parent().children(".qt").html()) + 1);
     
     $(this).parent().children(".full-price").addClass("added");
@@ -543,7 +554,6 @@ $(document).ready(function(){
   });
   
   $(".qt-minus").click(function(){
-    
     child = $(this).parent().children(".qt");
     
     if(parseInt(child.html()) > 1) {
@@ -554,6 +564,16 @@ $(document).ready(function(){
     
     var el = $(this);
     window.setTimeout(function(){el.parent().children(".full-price").removeClass("minused"); changeVal(el);}, 150);
+
+  	var id = $(this).attr('id');
+  	var quantity = $(this).parent().children(".qt").html();
+  	$.ajax({
+	      type:'GET',
+	      url:'http://localhost:8000/update-cart-remove-item/'+id+'/'+quantity,
+	      cache:false,
+	      data:{"id":id},  
+	   });
+    
   });
   
   window.setTimeout(function(){$(".is-open").removeClass("is-open")}, 1200);

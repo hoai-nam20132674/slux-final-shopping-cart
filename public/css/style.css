@@ -403,7 +403,7 @@ figure {
   color: #000 !important;
 }
 .sf-menu li:hover {
-  background-color: #ccb669;
+  background-image: url(../images/background-button.jpg);
 }
 .sf-menu li,
 .sf-menu ul li,
@@ -430,7 +430,7 @@ figure {
     border-top:1px solid #c6c6c6;
 }
 .sf-menu .fh5co-sub-menu li:hover {
-    background-color: #ccb669;
+    background-image: url(../images/background-button.jpg);
 }
 .sf-menu li:hover a,
 .sf-menu li.sfHover a,
