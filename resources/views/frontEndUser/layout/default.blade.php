@@ -51,6 +51,11 @@
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	
+	<!--Add to cart-->
+	<!-- <link rel="stylesheet" href="{{asset('addCart/css/reset.css')}}"> -->
+	<link rel="stylesheet" href="{{asset('addCart/css/style.css')}}"> 
+	<!--End add to cart-->
 
 	<!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -120,6 +125,92 @@
 
 		</div>
 		<!-- END fh5co-wrapper -->
+		<!-- Cart-->
+		<!-- <a href="#0" class="cd-add-to-cart" data-price="25.99">Add To Cart</a> -->
+		<div class="cd-cart-container">
+			<a href="{{URL::route('getCart')}}">
+				<div class="cd-cart-trigger">
+					Cart
+					@if($totalQuantity >0)
+					<ul class="count"> 
+						<li>{{$totalQuantity}}</li>
+						<li>{{$totalQuantity+1}}</li>
+					</ul>
+					@endif
+				</div>
+			</a>
+			<div class="cd-cart">
+				<div class="wrapper">
+					<header>
+						<h2>Cart</h2>
+						<span class="undo">Item removed. <a href="#0">Undo</a></span>
+					</header>
+					
+					<div class="body">
+						<ul>
+							<!-- products added to the cart will be inserted here using JavaScript -->
+							<li class="product">
+								<div class="product-image"><a href="#0"><img src="img/product-preview.png" alt="placeholder"></a></div>
+								<div class="product-details">
+									<h3><a href="#0">Product Name</a></h3>
+									<span class="price">$25.99</span>
+									<div class="actions">
+										<a href="#0" class="delete-item">Delete</a>
+										<div class="quantity">
+											<label for="cd-product-'+ productId +'">Qty</label>
+											<span class="select">
+												<select id="cd-product-'+ productId +'" name="quantity">
+													<option value="1">1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>
+													<option value="4">4</option>
+													<option value="5">5</option>
+													<option value="6">6</option>
+													<option value="7">7</option>
+													<option value="8">8</option>
+													<option value="9">9</option>
+												</select>
+											</span>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="product">
+								<div class="product-image"><a href="#0"><img src="img/product-preview.png" alt="placeholder"></a></div>
+								<div class="product-details">
+									<h3><a href="#0">Product Name</a></h3>
+									<span class="price">$25.99</span>
+									<div class="actions">
+										<a href="#0" class="delete-item">Delete</a>
+										<div class="quantity">
+											<label for="cd-product-'+ productId +'">Qty</label>
+											<span class="select">
+												<select id="cd-product-'+ productId +'" name="quantity">
+													<option value="1">1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>
+													<option value="4">4</option>
+													<option value="5">5</option>
+													<option value="6">6</option>
+													<option value="7">7</option>
+													<option value="8">8</option>
+													<option value="9">9</option>
+												</select>
+											</span>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+
+					<footer>
+						<a href="#0" class="checkout btn"><em>Checkout - $<span>0</span></em></a>
+					</footer>
+				</div>
+			</div> <!-- .cd-cart -->
+		</div>
+		<!--End Cart-->
 
 		<!-- jQuery -->
 
@@ -162,6 +253,15 @@
 		<!-- Main JS (Do not remove) -->
 		<script src="{{asset('js/main.js')}}"></script>
 		<script src="{{asset('js/procedure.js')}}"></script>
+
+
+		<!--Add to cart-->
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> -->
+		<script>
+			if( !window.jQuery ) document.write('<script src="{{asset('addCart/js/jquery-3.0.0.min.js')}}"><\/script>');
+		</script>
+		<script src="{{asset('addCart/js/main.js')}}"></script> <!-- Resource jQuery -->
+		<!--End add to cart-->
 	</body>
 </html>
 

@@ -368,7 +368,7 @@
 								<article class="product">
 									<header>
 										<a class="remove">
-											<img width="100%" src="" alt="">
+											<img width="100%" src="{{url('/uploads/images/products/'.$item["attributes"]["img"])}}" alt="">
 
 											<h3>Remove</h3>
 										</a>
@@ -384,7 +384,7 @@
 										<span class="qt-plus">+</span>
 
 										<h2 class="full-price">
-											{{$item->price*$item->quantity}}
+											{{number_format($item->price*$item->quantity,0,",",".")}}
 										</h2>
 
 										<h2 class="price">
@@ -401,16 +401,16 @@
 									
 									<div class="col-md-6">
 										<h2 class="subtotal">Subtotal: <span>163.96</span>€</h2>
-										<h3 class="tax">Taxes (5%): <span>8.2</span>€</h3>
-										<h3 class="shipping">Shipping: <span>5.00</span>€</h3>
+										<!-- <h3 class="tax">Taxes (5%): <span>8.2</span>€</h3>
+										<h3 class="shipping">Shipping: <span>5.00</span>€</h3> -->
 									</div>
 
 									<div class="col-md-6">
 											<div class="col-md-12">
-												<h1 class="total">Total: <span>177.16</span>€</h1>
+												<h1 class="total">Total: <span>{{$total}}</span>€</h1>
 											</div>
 											<div class="col-md-12">
-												<a href="" class="btn" style="width: 100%;">Tiếp tục mua hàng</a>
+												<a href="{{ URL::previous() }}" class="btn" style="width: 100%;">Tiếp tục mua hàng</a>
 											</div>
 											<div class="col-md-12">
 												<a class="btn" style="width: 100%;">Đặt hàng</a>

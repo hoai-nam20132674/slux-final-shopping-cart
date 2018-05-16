@@ -90,7 +90,7 @@
 										<div class="panel-body text-center ">{!!$pr->sale!!}</div>
 									</div>
 									
-									<button type="button" class="btn btn-danger width-100 fw-700">MUA NGAY</button>
+									<a href="{{URL::route('add-to-cart',$pr->url)}}"><button type="button" class="btn btn-danger width-100 fw-700">MUA NGAY</button></a>
 									
 									
 									<br>

@@ -19,6 +19,12 @@ class viewController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function index(){
+        $totalQuantity= Cart::getTotalQuantity();
+        return View('frontEndUser.index',['totalQuantity'=>$totalQuantity]);
+    }
+
     public function viewContentPageCategorie($url)
     {
         $categorie = Categories::where('url',$url)->get();
@@ -32,19 +38,22 @@ class viewController extends Controller
                 if($cate->type ==0){
                     $blogs = Blogs::select()->orderBy('created_at','DESC')->get();
                     $products=Products::select()->orderBy('created_at','DESC')->get();
-                    return View('frontEndUser.page-content.newsCategorie',['cate'=>$cate,'blogs'=>$blogs,'products'=>$products]);
+                    $totalQuantity= Cart::getTotalQuantity();
+                    return View('frontEndUser.page-content.newsCategorie',['cate'=>$cate,'blogs'=>$blogs,'products'=>$products,'totalQuantity'=>$totalQuantity]);
                 }
                 if($cate->type ==2){
                     $blogs = Blogs::select()->orderBy('created_at','DESC')->paginate(10);
                     $products = Products::select()->orderBy('created_at','DESC')->get();
-                    return View('frontEndUser.page-content.listNewsCategorie',['blogs'=>$blogs,'cate'=>$cate,'products'=>$products]);
+                    $totalQuantity= Cart::getTotalQuantity();
+                    return View('frontEndUser.page-content.listNewsCategorie',['blogs'=>$blogs,'cate'=>$cate,'products'=>$products,'totalQuantity'=>$totalQuantity]);
                 }
                 else{
                     $id =$cate->id;
                     $products= $this->getProductCategorie($id);
                     $idCateParents = $this->getIdCategorieParent($id);
                     $blogs =Blogs::select()->orderBy('created_at','DESC')->get();
-                    return View('frontEndUser.page-content.listProductCategorie',['products'=>$products,'idCateParents'=>$idCateParents,'blogs'=>$blogs]);
+                    $totalQuantity= Cart::getTotalQuantity();
+                    return View('frontEndUser.page-content.listProductCategorie',['products'=>$products,'idCateParents'=>$idCateParents,'blogs'=>$blogs,'totalQuantity'=>$totalQuantity]);
                 }
             }
         }
@@ -148,15 +157,22 @@ class viewController extends Controller
         // dd($products);
         return $products;
     }
-    public function addToCart($id){
-        $product = Products::where('id',$id)->get()->first();
-        Cart::add(array('id'=>$id,'name'=>$product->name,'quantity'=>1,'price'=>$product->price,'attributes'=>array('img'=>$product->image)));
+    public function addToCart($url){
+        $product = Products::where('url',$url)->get()->first();
+        Cart::add(array('id'=>$product->id,'name'=>$product->name,'quantity'=>1,'price'=>$product->price,'attributes'=>array('img'=>$product->image)));
         $content = Cart::getContent();
         return redirect()->route('getCart');
+        // dd($content);
+    }
+    public function updateCartItem($url){
+        $product = Products::where('url',$url)->get()->first();
+        Cart::add(array('id'=>$product->id,'name'=>$product->name,'quantity'=>1,'price'=>$product->price,'attributes'=>array('img'=>$product->image)));
     }
     public function getCart(){
         $contents = Cart::getContent();
-        return View('frontEndUser.page-content.cart',['contents'=>$contents]);
+        $total = Cart::getTotal();
+        $totalQuantity = Cart::getTotalQuantity();
+        return View('frontEndUser.page-content.cart',['contents'=>$contents,'total'=>$total,'totalQuantity'=>$totalQuantity]);
     }
     
 }

@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('frontEndUser.index');
-});
+Route::get('/',['as'=>'home','uses'=>'viewController@index']);
 Route::get('/cau-chuyen-slux.html', function () {
     return view('frontEndUser.slux-talk');
 });
@@ -39,7 +37,7 @@ Route::get('/getParentCategorie/{id}','viewController@getIdCategorieParent');
 Route::get('/getIdCategorieChildren/{id}','viewController@getIdCategorieChildren');
 Route::get('/getProductCategorie/{id}','viewController@getProductCategorie');
 
-Route::get('add-to-cart/{id}',['as'=>'add-to-cart','uses'=>'viewController@addToCart']);
+Route::get('add-to-cart/{url}',['as'=>'add-to-cart','uses'=>'viewController@addToCart']);
 Route::get('shopping-cart/gio-hang',['as'=>'getCart','uses'=>'viewController@getCart']);
 
 Route::get('/login/admin-master', ['as'=>'getLogin','uses'=>'Auth\AuthController@getLogin']);
