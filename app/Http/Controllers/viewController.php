@@ -11,7 +11,8 @@ use App\Categories;
 use App\Products_Images;
 use App\Blogs;
 use Cart;
-
+use App\Order;
+use App\Http\Requests\addOrderRequest;
 class viewController extends Controller
 {
     /**
@@ -64,7 +65,8 @@ class viewController extends Controller
                 $categories = Categories::whereIn('id',$idCateParents)->get();
                 $blogs = Blogs::where('categorie_id',$pr->categorie_id)->orderBy('created_at','DESC')->get();
                 $products = Products::where('categorie_id',$pr->categorie_id)->orderBy('created_at','DESC')->get();
-                return View('frontEndUser.page-content.view-product-item',['pr'=>$pr,'product_images'=>$product_images,'categories'=>$categories,'blogs'=>$blogs,'products'=>$products]);
+                $totalQuantity= Cart::getTotalQuantity();
+                return View('frontEndUser.page-content.view-product-item',['pr'=>$pr,'product_images'=>$product_images,'categories'=>$categories,'blogs'=>$blogs,'products'=>$products,'totalQuantity'=>$totalQuantity]);
             }
         }
         if(count($blog)>0){
@@ -72,7 +74,8 @@ class viewController extends Controller
                 $products = Products::where('categorie_id',$bl->categorie_id)->get();
                 $categorie = Categories::where('id',$bl->categorie_id)->get()->first();
                 $blogs =Blogs::where('categorie_id',$bl->categorie_id)->orderBy('created_at','DESC')->get();
-                return View('frontEndUser.page-content.view-news-item',['products'=>$products,'categorie'=>$categorie,'bl'=>$bl,'blogs'=>$blogs]);
+                $totalQuantity= Cart::getTotalQuantity();
+                return View('frontEndUser.page-content.view-news-item',['products'=>$products,'categorie'=>$categorie,'bl'=>$bl,'blogs'=>$blogs,'totalQuantity'=>$totalQuantity]);
             }
         }
     }
@@ -197,11 +200,40 @@ class viewController extends Controller
             return redirect()->route('home');
         }
     }
+    public function removeItem($id){
+        $content = Cart::getContent();
+        $i=0;
+        foreach($content as $item){
+            if($item->id == $id){
+                $i++;
+            }
+        }
+        if($i>0){
+            Cart::remove($id);
+        }
+        else{
+            return redirect()->route('home');
+        }
+    }
     public function getCart(){
         $contents = Cart::getContent();
         $total = Cart::getTotal();
         $totalQuantity = Cart::getTotalQuantity();
         return View('frontEndUser.page-content.cart',['contents'=>$contents,'total'=>$total,'totalQuantity'=>$totalQuantity]);
+    }
+    public function postAddOrder(addOrderRequest $request){
+        $content = Cart::getContent();
+        $price = Cart::getTotal();
+        if(count($content)>0){
+            $order = new Order;
+            $order->addOrder($request, $price, $content);
+            Cart::clear();
+            return redirect()->route('home')->with(['flash_level'=>'success','flash_message'=>'Đặt hàng thành công']);
+
+        }
+        else{
+            return redirect()->route('home')->with(['flash_level'=>'danger','flash_message'=>'Không có sản phẩm nào trong giỏ hàng']);
+        }
     }
     
 }

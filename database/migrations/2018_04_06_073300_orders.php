@@ -16,7 +16,9 @@ class Orders extends Migration
             $table->increments('id');
             $table->string('name',50);
             $table->string('phone_number',20);
+            $table->string('address');
             $table->string('price');
+            $table->string('messages');
             $table->timestamps();
         });
     }

@@ -118,7 +118,7 @@
 					?>
 					@foreach($blogs as $blog)
 						@if($i<3)
-							@if($blog->display ==1)
+							@if($blog->display ==1 && $blog->id != $bl->id)
 								<div class="col-md-4">
 									<div class="blog-new-item box-shadows" style="border: 1px solid #d4d4d4;"> 
 				                        <a href="{{url('/'.$blog["url"])}}">

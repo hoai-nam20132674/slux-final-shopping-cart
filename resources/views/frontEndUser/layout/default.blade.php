@@ -82,6 +82,17 @@
 	<body>
 		<div id="fh5co-wrapper">
 			<div id="fh5co-page">
+				<div class="container" style="background: #60ea27; padding: 0px; margin: 0px;width: 100%;">
+					<div class="row">
+						<div class="col-md-12">
+							@if( Session::has('flash_message'))
+				                <div style="text-align: center; margin-bottom: 0px; background: #60ea27; color: green; border-color: #60ea27;font-weight: 700;" class="alert alert-{{ Session::get('flash_level')}}">
+				                    {{ Session::get('flash_message')}}
+				                </div>
+				            @endif
+						</div>
+					</div>
+				</div>
 				<div id="fh5co-header">
 					@include('frontEndUser.layout.header')
 				</div>
@@ -91,8 +102,8 @@
 					@yield('slide-header')
 				</div>
 				
-				
 				<div class="page-content">
+						
 					@yield('content')
 					@yield('services')
 				
@@ -133,8 +144,8 @@
 					Cart
 					@if($totalQuantity >0)
 					<ul class="count"> 
-						<li>{{$totalQuantity}}</li>
-						<li>{{$totalQuantity+1}}</li>
+						<li class="count-cart">{{$totalQuantity}}</li>
+						<li >{{$totalQuantity+1}}</li>
 					</ul>
 					@endif
 				</div>
@@ -205,7 +216,7 @@
 					</div>
 
 					<footer>
-						<a href="#0" class="checkout btn"><em>Checkout - $<span>0</span></em></a>
+						<a style="display: none;" href="#0" class="checkout btn"><em>Checkout - $<span>0</span></em></a>
 					</footer>
 				</div>
 			</div> <!-- .cd-cart -->
@@ -262,6 +273,9 @@
 		</script>
 		<script src="{{asset('addCart/js/main.js')}}"></script> <!-- Resource jQuery -->
 		<!--End add to cart-->
+		<script type="text/javascript">
+	    	$("div.alert").delay(2000).slideUp();
+	    </script>
 	</body>
 </html>
 
