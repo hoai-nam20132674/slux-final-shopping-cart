@@ -12,6 +12,7 @@ use App\Products_Images;
 use App\Blogs;
 use Cart;
 use App\Order;
+use App\Menu_Sidebar;
 use App\Http\Requests\addOrderRequest;
 class viewController extends Controller
 {
@@ -46,7 +47,8 @@ class viewController extends Controller
                     $blogs = Blogs::select()->orderBy('created_at','DESC')->paginate(10);
                     $products = Products::select()->orderBy('created_at','DESC')->get();
                     $totalQuantity= Cart::getTotalQuantity();
-                    return View('frontEndUser.page-content.listNewsCategorie',['blogs'=>$blogs,'cate'=>$cate,'products'=>$products,'totalQuantity'=>$totalQuantity]);
+                    $menu_sidebars= Menu_Sidebar::select()->get();
+                    return View('frontEndUser.page-content.listNewsCategorie',['blogs'=>$blogs,'cate'=>$cate,'products'=>$products,'totalQuantity'=>$totalQuantity,'menu_sidebars'=>$menu_sidebars]);
                 }
                 else{
                     $id =$cate->id;
@@ -54,7 +56,8 @@ class viewController extends Controller
                     $idCateParents = $this->getIdCategorieParent($id);
                     $blogs =Blogs::select()->orderBy('created_at','DESC')->get();
                     $totalQuantity= Cart::getTotalQuantity();
-                    return View('frontEndUser.page-content.listProductCategorie',['products'=>$products,'idCateParents'=>$idCateParents,'blogs'=>$blogs,'totalQuantity'=>$totalQuantity]);
+                    $menu_sidebars= Menu_Sidebar::select()->get();
+                    return View('frontEndUser.page-content.listProductCategorie',['products'=>$products,'idCateParents'=>$idCateParents,'blogs'=>$blogs,'totalQuantity'=>$totalQuantity,'menu_sidebars'=>$menu_sidebars]);
                 }
             }
         }
