@@ -28,7 +28,7 @@
 					<div class="panel-heading">Thông tin giỏ hàng</div>
 					<div class="panel-body">
 						@foreach($contents as $item)
-						<div class="row">
+						<div class="row" style="margin-bottom: 40px;">
 							<section id="cart"> 
 								<article class="product">
 									<div class="col-md-12">

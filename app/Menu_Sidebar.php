@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Input;
 
 class Menu_Sidebar extends Model
 {

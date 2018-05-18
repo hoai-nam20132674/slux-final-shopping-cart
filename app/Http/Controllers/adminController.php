@@ -204,5 +204,13 @@ class adminController extends Controller
         $product_repair->editProductRepair($request,$id);
         return redirect('admin/getListProductsRepair')->with(['flash_level'=>'success','flash_message'=>'Sửa thông tin khách hàng thành công']);
     }
+
+
+    // Edit Seo
+    public function editSystems(){
+        $countBlogs = Blogs::select()->count();
+        return View('frontEndAdmin.page-content.systems',['countBlogs'=>$countBlogs]);
+    }
+    // End edit seo
     
 }

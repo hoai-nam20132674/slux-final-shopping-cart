@@ -29,7 +29,7 @@
 							$categorie = App\Categories::where('id',$cateMenu->categorie_id)->get()->first();
 							$categories = App\Categories::where('parent_id',$categorie->id)->get();
 						?>
-						@if($categorie->parent_id == 0)
+						<!-- @if($categorie->parent_id == 0) -->
 							@if(count($categories)>0)
 								<li><a href="{{url('/'.$categorie["url"])}}" class="fh5co-sub-ddown">{{$categorie->name}}</a>
 									<ul class="fh5co-sub-menu">
@@ -41,7 +41,7 @@
 							@else
 								<li><a href="{{url('/'.$categorie["url"])}}">{{$categorie->name}}</a></li>
 							@endif
-						@endif
+						<!-- @endif -->
 					@endforeach
 					<!-- <li><a href="#">Dịch vụ</a></li>
 					<li><a href="/cau-chuyen-slux.html">Câu chuyện</a></li>

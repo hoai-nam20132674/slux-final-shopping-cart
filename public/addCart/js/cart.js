@@ -39,7 +39,7 @@ $(document).ready(function(){
   	$.ajax({
 	      type:'GET',
 	      url:'http://localhost:8000/remove-item/'+id,
-	      cache:false,
+	      cache:true,
 	      data:{"id":id},  
 	   });
     var el = $(this);

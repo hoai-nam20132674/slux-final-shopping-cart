@@ -49,7 +49,7 @@
 							<ul>
 								<li><a href="{{URL::route('editMenu')}}">Menu</a></li>
 								<li><a href="index2.html">Media</a></li>
-								<li><a href="index3.html">Dashboard 3</a></li>
+								<li><a href="{{URL::route('editSystems')}}">Seo</a></li>
 							</ul>
 						</li>
 						<li>

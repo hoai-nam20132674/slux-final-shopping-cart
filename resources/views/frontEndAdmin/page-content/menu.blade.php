@@ -73,7 +73,7 @@
 					<div class="form-group row">
 						<label for="select2-demo-3" class="col-sm-2 form-control-label text-center">MENU SIDEBAR</label>
 						<div class="col-sm-6">
-							<select name="categorie_footer[]" id="select2-demo-3" class="form-control" data-plugin="select2" multiple="multiple">
+							<select name="categorie_sidebar[]" id="select2-demo-3" class="form-control" data-plugin="select2" multiple="multiple">
 								@foreach($categories as $cate)
 									@if($cate->id ==1){}
 									@else

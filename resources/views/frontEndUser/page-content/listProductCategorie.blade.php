@@ -71,33 +71,32 @@
 					<div class="col-md-3">
 						<div id='cssmenu'>
 							<ul>
-							   <li class='active'><a ><span>Danh mục</span></a></li>
-							   <li class='has-sub'><a href='#'><span>Linh kiện Nokia</span></a>
-							      <ul>
-							         	<li><a href='#'><span>Main</span></a></li>
-							         	<li><a href='#'><span>Vỏ máy</span></a></li>
-							        	<li><a href='#'><span>Phím</span></a></li>
-							      </ul>
-							   </li>
-							   <li class='has-sub'><a href='#'><span>Linh kiện Vertu</span></a>
-							      <ul>
-							         	<li><a href='#'><span>Main</span></a></li>
-							         	<li><a href='#'><span>Vỏ máy</span></a></li>
-							         	<li><a href='#'><span>Phím</span></a></li>
-							      </ul>
-							   </li>
-							   <li class='has-sub'><a href='#'><span>Phụ kiện Nokia</span></a>
-									<ul>
-							         	<li><a href='#'><span>Tai nghe</span></a></li>
-							         	<li><a href='#'><span>Sạc pin</span></a></li>
-							      	</ul>
-							   </li>
-							   <li class='has-sub'><a href='#'><span>Phụ kiện Vertu</span></a>
-									<ul>
-							         	<li><a href='#'><span>Tai nghe</span></a></li>
-							        	<li><a href='#'><span>Sạc pin</span></a></li>
-							      	</ul>
-							   </li>
+								<li class='active'><a ><span>Danh mục</span></a></li>
+								<?php 
+									$sideMenus = App\Menu_Sidebar::select()->get();
+								?>
+								@foreach($sideMenus as $sideMenu)
+									<?php
+										$categorie = App\Categories::where('id',$sideMenu->categorie_id)->get()->first();
+										$categories = App\Categories::where('parent_id',$categorie->id)->get();
+									?>
+									<!-- @if($categorie->parent_id == 0) -->
+										@if(count($categories)>0)
+											<li class='has-sub'><a href='{{url('/'.$categorie["url"])}}'><span>{{$categorie->name}}</span></a>
+												
+													<ul class="">
+														@foreach($categories as $categorie)
+															<li><a href='{{url('/'.$categorie["url"])}}'><span>{{$categorie->name}}</span></a></li>
+														@endforeach
+													</ul>
+												
+											</li>
+										@else
+											<li class='has-sub'><a href='{{url('/'.$categorie["url"])}}'><span>{{$categorie->name}}</span></a></li>
+										@endif
+									<!-- @endif -->
+								@endforeach
+							   
 							</ul>
 						</div>
 						<hr>

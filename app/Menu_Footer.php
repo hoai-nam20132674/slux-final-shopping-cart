@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Input;
 class Menu_Footer extends Model
 {
     protected $table = 'menu_footer'; //Ten bang

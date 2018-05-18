@@ -78,7 +78,8 @@ class viewController extends Controller
                 $categorie = Categories::where('id',$bl->categorie_id)->get()->first();
                 $blogs =Blogs::where('categorie_id',$bl->categorie_id)->orderBy('created_at','DESC')->get();
                 $totalQuantity= Cart::getTotalQuantity();
-                return View('frontEndUser.page-content.view-news-item',['products'=>$products,'categorie'=>$categorie,'bl'=>$bl,'blogs'=>$blogs,'totalQuantity'=>$totalQuantity]);
+                $menu_sidebars= Menu_Sidebar::select()->get();
+                return View('frontEndUser.page-content.view-news-item',['products'=>$products,'categorie'=>$categorie,'bl'=>$bl,'blogs'=>$blogs,'totalQuantity'=>$totalQuantity,'menu_sidebars'=>$menu_sidebars]);
             }
         }
     }
