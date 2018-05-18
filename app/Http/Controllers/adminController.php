@@ -15,6 +15,7 @@ use App\Menu_Header;
 use App\Menu_Footer;
 use App\Menu_Sidebar;
 use App\Products_Repair;
+use App\Systems;
 use App\Http\Requests\addCategorieRequest;
 use App\Http\Requests\editCategorieRequest;
 use App\Http\Requests\editBlogRequest;
@@ -209,7 +210,13 @@ class adminController extends Controller
     // Edit Seo
     public function editSystems(){
         $countBlogs = Blogs::select()->count();
-        return View('frontEndAdmin.page-content.systems',['countBlogs'=>$countBlogs]);
+        $systems = Systems::get();
+        return View('frontEndAdmin.page-content.systems',['countBlogs'=>$countBlogs,'systems'=>$systems]);
+    }
+    public function postEditSystems(Request $request){
+        $system = new Systems;
+        $system->editSystems($request);
+        return redirect()->route('editSystems')->with(['flash_level'=>'success','flash_message'=>'Sửa thông tin thành công']);
     }
     // End edit seo
     

@@ -39,7 +39,7 @@
 			                                        <p class="btn-add">
 			                                            <i class="fa fa-shopping-cart" style="color: #fff;"></i><a href="{{URL::route('add-to-cart',$pr->url)}}" class="hidden-sm">MUA NGAY</a></p>
 			                                        <p class="btn-details">
-			                                            <i class="fa fa-list" style="color: #fff;"></i><a href="http://www.jquery2dotnet.com" class="hidden-sm">XEM THÊM</a></p>
+			                                            <i class="fa fa-list" style="color: #fff;"></i><a href="{{url('/'.$pr["url"])}}" class="hidden-sm">XEM THÊM</a></p>
 			                                    </div>
 			                                    <div class="clearfix">
 			                                    </div>

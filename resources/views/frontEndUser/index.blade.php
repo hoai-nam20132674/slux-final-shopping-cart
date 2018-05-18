@@ -1,4 +1,4 @@
-@extends('frontEndUser.layout.default')
+@extends('frontEndUser.layout.default_home')
 
 @section('slide-header')
 	@include('frontEndUser.layout.slide-header')

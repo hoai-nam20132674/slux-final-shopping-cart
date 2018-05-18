@@ -78,7 +78,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
 	Route::get('deleteProductRepair/{id}',['as'=>'deleteProductRepair','uses'=>'adminController@deleteProductRepair']);
 
 	Route::get('systems-information',['as'=>'editSystems','uses'=>'adminController@editSystems']);
-	Route::post('postEditSystems',['as'=>'postEditSystems','uses'=>'adminController@editSystems']);
+	Route::post('postEditSystems',['as'=>'postEditSystems','uses'=>'adminController@postEditSystems']);
 
 
 	Route::get('editMenu',['as'=>'editMenu','uses'=>'adminController@editMenu']);

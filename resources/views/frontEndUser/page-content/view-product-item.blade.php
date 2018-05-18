@@ -206,7 +206,7 @@
 							                        <div class="col-sm-4 product-item">
 							                            <div class="col-item">
 							                                <div class="photo">
-							                                    <a href="{{url('/'.$pr["url"])}}"><img src="{{url('/uploads/images/products/'.$prs["image"])}}" alt="a" /></a>
+							                                    <a href="{{url('/'.$prs["url"])}}"><img src="{{url('/uploads/images/products/'.$prs["image"])}}" alt="a" /></a>
 							                                </div>
 							                                <div class="info">
 							                                    <div class="row">
@@ -218,9 +218,9 @@
 							                                    </div>
 							                                    <div class="separator clear-left">
 							                                        <p class="btn-add">
-							                                            <i class="fa fa-shopping-cart"></i><a href="http://www.jquery2dotnet.com" class="hidden-sm">Add to cart</a></p>
+							                                            <i class="fa fa-shopping-cart"></i><a href="{{URL::route('add-to-cart',$prs->url)}}" class="hidden-sm">MUA NGAY</a></p>
 							                                        <p class="btn-details">
-							                                            <i class="fa fa-list"></i><a href="http://www.jquery2dotnet.com" class="hidden-sm">More details</a></p>
+							                                            <i class="fa fa-list"></i><a href="{{url('/'.$prs["url"])}}" class="hidden-sm">XEM THÊM</a></p>
 							                                    </div>
 							                                    <div class="clearfix">
 							                                    </div>

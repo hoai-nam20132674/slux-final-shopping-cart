@@ -5,21 +5,21 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>{{$seo->title}}</title>
+	<title>{{$system->title}}</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="{{$seo->seo_description}}" />
-	<meta name="keywords" content="{{$seo->seo_keyword}}" />
+	<meta name="description" content="{{$system->description}}" />
+	<meta name="keywords" content="{{$system->keywords}}" />
 	<meta name="author" content="Cuong.vn" />
 
   	<!-- Facebook and Twitter integration -->
-	<meta property="og:title" content="{{$seo->title}}"/>
+	<meta property="og:title" content="{{$system->title}}"/>
 	<meta property="og:image" content="{{$system->og_image}}"/>
-	<meta property="og:url" content="{{url('/'.$seo->url)}}"/>
+	<meta property="og:url" content="{{url('/')}}"/>
 	<meta property="og:site_name" content="{{$system->site_name}}"/>
-	<meta property="og:description" content="{{$seo->seo_description}}"/>
-	<meta name="twitter:title" content="{{$seo->title}}" />
+	<meta property="og:description" content="{{$system->description}}"/>
+	<meta name="twitter:title" content="{{$system->title}}" />
 	<meta name="twitter:image" content="{{$system->og_image}}" />
-	<meta name="twitter:url" content="{{url('/'.$seo->url)}}" />
+	<meta name="twitter:url" content="http://slux.vn" />
 	<meta name="twitter:card" content="" />
 	<link rel="canonical" href="{{url()}}" />
 

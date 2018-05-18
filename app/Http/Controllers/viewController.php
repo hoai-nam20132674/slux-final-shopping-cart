@@ -13,6 +13,7 @@ use App\Blogs;
 use Cart;
 use App\Order;
 use App\Menu_Sidebar;
+use App\Systems;
 use App\Http\Requests\addOrderRequest;
 class viewController extends Controller
 {
@@ -24,7 +25,8 @@ class viewController extends Controller
 
     public function index(){
         $totalQuantity= Cart::getTotalQuantity();
-        return View('frontEndUser.index',['totalQuantity'=>$totalQuantity]);
+        $system = Systems::get()->first();
+        return View('frontEndUser.index',['totalQuantity'=>$totalQuantity,'system'=>$system]);
     }
 
     public function viewContentPageCategorie($url)
@@ -41,14 +43,18 @@ class viewController extends Controller
                     $blogs = Blogs::select()->orderBy('created_at','DESC')->get();
                     $products=Products::select()->orderBy('created_at','DESC')->get();
                     $totalQuantity= Cart::getTotalQuantity();
-                    return View('frontEndUser.page-content.newsCategorie',['cate'=>$cate,'blogs'=>$blogs,'products'=>$products,'totalQuantity'=>$totalQuantity]);
+                    $seo = $cate;
+                    $system = Systems::get()->first();
+                    return View('frontEndUser.page-content.newsCategorie',['cate'=>$cate,'blogs'=>$blogs,'products'=>$products,'totalQuantity'=>$totalQuantity,'seo'=>$seo,'system'=>$system]);
                 }
                 if($cate->type ==2){
                     $blogs = Blogs::select()->orderBy('created_at','DESC')->paginate(10);
                     $products = Products::select()->orderBy('created_at','DESC')->get();
                     $totalQuantity= Cart::getTotalQuantity();
                     $menu_sidebars= Menu_Sidebar::select()->get();
-                    return View('frontEndUser.page-content.listNewsCategorie',['blogs'=>$blogs,'cate'=>$cate,'products'=>$products,'totalQuantity'=>$totalQuantity,'menu_sidebars'=>$menu_sidebars]);
+                    $seo = $cate;
+                    $system = Systems::get()->first();
+                    return View('frontEndUser.page-content.listNewsCategorie',['blogs'=>$blogs,'cate'=>$cate,'products'=>$products,'totalQuantity'=>$totalQuantity,'menu_sidebars'=>$menu_sidebars,'seo'=>$seo,'system'=>$system]);
                 }
                 else{
                     $id =$cate->id;
@@ -57,7 +63,9 @@ class viewController extends Controller
                     $blogs =Blogs::select()->orderBy('created_at','DESC')->get();
                     $totalQuantity= Cart::getTotalQuantity();
                     $menu_sidebars= Menu_Sidebar::select()->get();
-                    return View('frontEndUser.page-content.listProductCategorie',['products'=>$products,'idCateParents'=>$idCateParents,'blogs'=>$blogs,'totalQuantity'=>$totalQuantity,'menu_sidebars'=>$menu_sidebars]);
+                    $seo = $cate;
+                    $system = Systems::get()->first();
+                    return View('frontEndUser.page-content.listProductCategorie',['products'=>$products,'idCateParents'=>$idCateParents,'blogs'=>$blogs,'totalQuantity'=>$totalQuantity,'menu_sidebars'=>$menu_sidebars,'seo'=>$seo,'system'=>$system]);
                 }
             }
         }
@@ -69,7 +77,9 @@ class viewController extends Controller
                 $blogs = Blogs::where('categorie_id',$pr->categorie_id)->orderBy('created_at','DESC')->get();
                 $products = Products::where('categorie_id',$pr->categorie_id)->orderBy('created_at','DESC')->get();
                 $totalQuantity= Cart::getTotalQuantity();
-                return View('frontEndUser.page-content.view-product-item',['pr'=>$pr,'product_images'=>$product_images,'categories'=>$categories,'blogs'=>$blogs,'products'=>$products,'totalQuantity'=>$totalQuantity]);
+                $seo = $pr;
+                $system = Systems::get()->first();
+                return View('frontEndUser.page-content.view-product-item',['pr'=>$pr,'product_images'=>$product_images,'categories'=>$categories,'blogs'=>$blogs,'products'=>$products,'totalQuantity'=>$totalQuantity,'seo'=>$seo,'system'=>$system]);
             }
         }
         if(count($blog)>0){
@@ -79,7 +89,9 @@ class viewController extends Controller
                 $blogs =Blogs::where('categorie_id',$bl->categorie_id)->orderBy('created_at','DESC')->get();
                 $totalQuantity= Cart::getTotalQuantity();
                 $menu_sidebars= Menu_Sidebar::select()->get();
-                return View('frontEndUser.page-content.view-news-item',['products'=>$products,'categorie'=>$categorie,'bl'=>$bl,'blogs'=>$blogs,'totalQuantity'=>$totalQuantity,'menu_sidebars'=>$menu_sidebars]);
+                $seo = $bl;
+                $system = Systems::get()->first();
+                return View('frontEndUser.page-content.view-news-item',['products'=>$products,'categorie'=>$categorie,'bl'=>$bl,'blogs'=>$blogs,'totalQuantity'=>$totalQuantity,'menu_sidebars'=>$menu_sidebars,'seo'=>$seo,'system'=>$system]);
             }
         }
     }
@@ -223,7 +235,11 @@ class viewController extends Controller
         $contents = Cart::getContent();
         $total = Cart::getTotal();
         $totalQuantity = Cart::getTotalQuantity();
-        return View('frontEndUser.page-content.cart',['contents'=>$contents,'total'=>$total,'totalQuantity'=>$totalQuantity]);
+        $array = array('title'=>'gio hang','seo_description'=>'gio hang','seo_keyword'=>'gio hang','url'=>'shopping-cart/gio-hang');
+        $seo = (object)$array;
+        $system = Systems::get()->first();
+        return View('frontEndUser.page-content.cart',['contents'=>$contents,'total'=>$total,'totalQuantity'=>$totalQuantity,'seo'=>$seo,'system'=>$system]);
+        // return $seo;
     }
     public function postAddOrder(addOrderRequest $request){
         $content = Cart::getContent();

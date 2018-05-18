@@ -33,83 +33,149 @@
 				<form action="{{URL::route('postEditSystems')}}" method="POST" enctype="multipart/form-data">
 					<input type="hidden" name="_token" value="{{ csrf_token()}}">
 					<div class="row">
-						<div class="col-md-9">
-							<div class="row">
-
-								<div class="col-md-3">
-									<a href="http://slux.vn/" target="_blank">
-										<div style="background: #0275d8;" class="text-center">
-											<span style="color: #fff; font-size:20px; ">Icon tiêu đề</span>
-										</div>
-									</a>
-								</div>
+						@if(count($systems)>0)
+							@foreach($systems as $system)
 								<div class="col-md-9">
-									<div class="form-group">	
-										<input type="text" class="form-control" name="logo_title" placeholder="Nhập Url" value="{{old('url')}}">
+									<div class="row">
+
+										<div class="col-md-3">
+											<a href="http://slux.vn/" target="_blank">
+												<div style="background: #0275d8;" class="text-center">
+													<span style="color: #fff; font-size:20px; ">Icon tiêu đề</span>
+												</div>
+											</a>
+										</div>
+										<div class="col-md-9">
+											<div class="form-group">	
+												<input type="text" class="form-control" name="logo_title" placeholder="Nhập Url" value="{{$system->logo_title}}">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+
+										<div class="col-md-3">
+											<a href="http://slux.vn/" target="_blank">
+												<div style="background: #0275d8;" class="text-center">
+													<span style="color: #fff; font-size:20px; ">Ảnh đại diện FB</span>
+												</div>
+											</a>
+										</div>
+										<div class="col-md-9">
+											<div class="form-group">	
+												<input type="text" class="form-control" name="og_image" placeholder="Nhập Url" value="{{$system->og_image}}">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+
+										<div class="col-md-3">
+											<a href="http://slux.vn/" target="_blank">
+												<div style="background: #0275d8;" class="text-center">
+													<span style="color: #fff; font-size:20px; ">Logo website</span>
+												</div>
+											</a>
+										</div>
+										<div class="col-md-9">
+											<div class="form-group">	
+												<input type="text" class="form-control" name="logo_website" placeholder="Nhập Url" value="{{$system->logo_website}}">
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="exampleInputEmail1">Tiêu đề</label>
+										<input type="text" class="form-control" name="title" placeholder="Nhập tiêu đề danh mục" value="{{$system->title}}">
+									</div>
+									
+									<div class="form-group">
+										<label for="exampleInputEmail1">Keywords</label>
+										<input type="text" class="form-control" name="keywords" placeholder="Keywords Seo" value="{{$system->keywords}}">
+									</div>
+									<div class="form-group">
+										<label for="exampleInputEmail1">Description</label>
+										<input type="text" class="form-control" name="description" placeholder="Description Seo" value="{{$system->description}}">
+									</div>
+									<div class="form-group">
+										<label for="exampleInputEmail1">Site_name</label>
+										<input type="text" class="form-control" name="site_name" placeholder="Description Seo" value="{{$system->site_name}}">
+									</div>
+									<div class="form-group">
+										<label for="exampleInputEmail1">Script bổ sung</label>
+										<textarea class="form-control" rows="10" name="script">{{$system->script}}</textarea>
+									</div>
+									
+								</div>
+							@endforeach
+						@else
+							<div class="col-md-9">
+								<div class="row">
+
+									<div class="col-md-3">
+										<a href="http://slux.vn/" target="_blank">
+											<div style="background: #0275d8;" class="text-center">
+												<span style="color: #fff; font-size:20px; ">Icon tiêu đề</span>
+											</div>
+										</a>
+									</div>
+									<div class="col-md-9">
+										<div class="form-group">	
+											<input type="text" class="form-control" name="logo_title" placeholder="Nhập Url" value="">
+										</div>
 									</div>
 								</div>
-							</div>
-							<div class="row">
+								<div class="row">
 
-								<div class="col-md-3">
-									<a href="http://slux.vn/" target="_blank">
-										<div style="background: #0275d8;" class="text-center">
-											<span style="color: #fff; font-size:20px; ">Ảnh đại diện FB</span>
+									<div class="col-md-3">
+										<a href="http://slux.vn/" target="_blank">
+											<div style="background: #0275d8;" class="text-center">
+												<span style="color: #fff; font-size:20px; ">Ảnh đại diện FB</span>
+											</div>
+										</a>
+									</div>
+									<div class="col-md-9">
+										<div class="form-group">	
+											<input type="text" class="form-control" name="og_image" placeholder="Nhập Url" value="">
 										</div>
-									</a>
-								</div>
-								<div class="col-md-9">
-									<div class="form-group">	
-										<input type="text" class="form-control" name="og_image" placeholder="Nhập Url" value="{{old('url')}}">
 									</div>
 								</div>
-							</div>
-							<div class="row">
+								<div class="row">
 
-								<div class="col-md-3">
-									<a href="http://slux.vn/" target="_blank">
-										<div style="background: #0275d8;" class="text-center">
-											<span style="color: #fff; font-size:20px; ">Logo website</span>
+									<div class="col-md-3">
+										<a href="http://slux.vn/" target="_blank">
+											<div style="background: #0275d8;" class="text-center">
+												<span style="color: #fff; font-size:20px; ">Logo website</span>
+											</div>
+										</a>
+									</div>
+									<div class="col-md-9">
+										<div class="form-group">	
+											<input type="text" class="form-control" name="logo_website" placeholder="Nhập Url" value="">
 										</div>
-									</a>
-								</div>
-								<div class="col-md-9">
-									<div class="form-group">	
-										<input type="text" class="form-control" name="logo_website" placeholder="Nhập Url" value="{{old('url')}}">
 									</div>
 								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1">Tiêu đề</label>
+									<input type="text" class="form-control" name="title" placeholder="Nhập tiêu đề danh mục" value="">
+								</div>
+								
+								<div class="form-group">
+									<label for="exampleInputEmail1">Keywords</label>
+									<input type="text" class="form-control" name="keywords" placeholder="Keywords Seo" value="">
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1">Description</label>
+									<input type="text" class="form-control" name="description" placeholder="Description Seo" value="">
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1">Site_name</label>
+									<input type="text" class="form-control" name="site_name" placeholder="Description Seo" value="">
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1">Script bổ sung</label>
+									<textarea class="form-control" rows="10" name="script"></textarea>
+								</div>
+								
 							</div>
-							<div class="form-group">
-								<label for="exampleInputEmail1">Tiêu đề</label>
-								<input type="text" class="form-control" name="title" placeholder="Nhập tiêu đề danh mục" value="{{old('title')}}">
-							</div>
-							
-							<div class="form-group">
-								<label for="exampleInputEmail1">Keywords</label>
-								<input type="text" class="form-control" name="keywords" placeholder="Keywords Seo" value="{{old('seo_keyword')}}">
-							</div>
-							<div class="form-group">
-								<label for="exampleInputEmail1">Description</label>
-								<input type="text" class="form-control" name="description" placeholder="Description Seo" value="{{old('seo_description')}}">
-							</div>
-							<div class="form-group">
-								<label for="exampleInputEmail1">Site_name</label>
-								<input type="text" class="form-control" name="site_name" placeholder="Description Seo" value="{{old('seo_description')}}">
-							</div>
-							<div class="form-group">
-								<label for="exampleTextarea">Script bổ sung</label>
-								<textarea class="form-control" name="script" rows="3">{{old('script')}}</textarea>
-								<script type="text/javascript">
-							      var editor = CKEDITOR.replace('script',{
-							       language:'vi',
-							       filebrowserImageBrowseUrl : '../admin/ckfinder/ckfinder.html?type=Images',
-							       filebrowserFlashBrowseUrl : '../admin/ckfinder/ckfinder.html?type=Flash',
-							       filebrowserImageUploadUrl : '../admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
-							       filebrowserFlashUploadUrl : '../admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash',
-							       });
-							     </script>﻿
-							</div>
-						</div>
+						@endif
 						<!-- <div class="col-md-3">
 							<div class="checkbox">
 								<label>
