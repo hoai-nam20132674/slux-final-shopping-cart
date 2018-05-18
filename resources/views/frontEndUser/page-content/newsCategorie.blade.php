@@ -45,7 +45,7 @@
 						                        </a>
 							                    <br>
 							                    <br>
-						                    	<h4><a href="#"  style="color: #000;">{{$blog->title}}</a></h4>
+						                    	<h4><a href="{{url('/'.$blog["url"])}}"  style="color: #000;">{{$blog->title}}</a></h4>
 						                        <div class="clear"></div>
 											</div>
 										</div>
@@ -73,17 +73,12 @@
 				                                            <h5 style="text-transform: uppercase; font-weight: 700;">{{$prs->name}}</h5>
 				                                            <h5 class="price-text-color">{{$prs->price}}</h5>
 				                                        </div>
-				                                        <div class="rating hidden-sm col-md-12">
-				                                            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-				                                            </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-				                                            </i><i class="fa fa-star"></i>
-				                                        </div>
 				                                    </div>
 				                                    <div class="separator clear-left">
 				                                        <p class="btn-add">
-				                                            <i class="fa fa-shopping-cart"></i><a href="http://www.jquery2dotnet.com" class="hidden-sm">Add to cart</a></p>
+				                                            <i class="fa fa-shopping-cart"></i><a href="{{URL::route('add-to-cart',$prs->url)}}" class="hidden-sm">MUA NGAY</a></p>
 				                                        <p class="btn-details">
-				                                            <i class="fa fa-list"></i><a href="http://www.jquery2dotnet.com" class="hidden-sm">More details</a></p>
+				                                            <i class="fa fa-list"></i><a href="{{url('/'.$prs["url"])}}" class="hidden-sm">XEM THÊM</a></p>
 				                                    </div>
 				                                    <div class="clearfix">
 				                                    </div>
