@@ -188,4 +188,9 @@ class Products extends Model
 			
 		}
 	}
+	public function supportView($id){
+		$product = Products::where('id',$id)->get()->first();
+		$product->view  = $product->view +1;
+		$product->save();
+	}
 }

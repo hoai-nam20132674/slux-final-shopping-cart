@@ -19,6 +19,7 @@ class Orders extends Migration
             $table->string('address');
             $table->string('price');
             $table->string('messages');
+            $table->integer('status');
             $table->timestamps();
         });
     }

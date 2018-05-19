@@ -100,26 +100,12 @@
 							</ul>
 						</li>
 						<li class="with-sub">
-							<a href="#" class="waves-effect  waves-light">
+							<a href="{{URL::route('getListOrders')}}" class="waves-effect  waves-light">
 								<span class="s-caret"><i class="fa fa-angle-down"></i></span>
 								<span class="tag tag-success">3</span>
 								<span class="s-icon"><i class="ti-gallery"></i></span>
-								<span class="s-text">Pages</span>
+								<span class="s-text">Đơn hàng</span>
 							</a>
-							<ul>
-								<li><a href="pages-blank.html">Blank</a></li>
-								<li><a href="pages-contactform.html">Contact Form</a></li>
-								<li><a href="pages-403.html">Error 403</a></li>
-								<li><a href="pages-404.html">Error 404</a></li>
-								<li><a href="pages-500.html">Error 500</a></li>
-								<li><a href="pages-faq.html">FAQ</a></li>
-								<li><a href="pages-invoice.html">Invoice</a></li>
-								<li><a href="pages-profile.html">Profile</a></li>
-								<li><a href="pages-reset-password.html">Reset Password</a></li>
-								<li><a href="pages-sign-in.html">Sign In</a></li>
-								<li><a href="pages-sign-in2.html">Sign In 2</a></li>
-								<li><a href="pages-sign-up.html">Sign Up</a></li>
-							</ul>
 						</li>
 						<li class="with-sub">
 							<a href="#" class="waves-effect  waves-light">

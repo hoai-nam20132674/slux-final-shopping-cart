@@ -81,4 +81,9 @@ class Blogs extends Model
 			$blog->save();
 		}
 	}
+	public function supportView($id){
+		$blog = Blogs::where('id',$id)->get()->first();
+		$blog ->view = $blog->view +1;
+		$blog->save();
+	}
 }

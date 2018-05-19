@@ -15,7 +15,7 @@
 			
 			<h1 id="fh5co-logo">
 				<!-- <a href="/">Slux +</a> -->
-				<a href="/"><img src="{{asset('images/logo-slux.png')}}"></a>
+				<a href="/"><img src="{{$system->logo_website}}"></a>
 			</h1>
 			<!-- START #fh5co-menu-wrap -->
 			<nav id="fh5co-menu-wrap" role="navigation">

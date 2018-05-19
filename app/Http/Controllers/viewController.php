@@ -255,5 +255,15 @@ class viewController extends Controller
             return redirect()->route('home')->with(['flash_level'=>'danger','flash_message'=>'Không có sản phẩm nào trong giỏ hàng']);
         }
     }
+    public function supportViewProduct($id){
+        $product = new Products;
+        $product ->supportView($id);
+        echo "thành công";
+    }
+    public function supportViewBlog($id){
+        $blog = new Blogs;
+        $blog ->supportView($id);
+        echo "thành công";
+    }
     
 }

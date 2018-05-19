@@ -24,28 +24,29 @@
 							@foreach($products as $pr)
 								@if($pr->display ==1)
 			                        <div class="col-sm-4 product-item">
-			                            <div class="col-item">
-			                                <div class="photo">
-			                                    <a href="{{url('/'.$pr["url"])}}"><img src="{{url('/uploads/images/products/'.$pr["image"])}}" alt="a" /></a>
-			                                </div>
-			                                <div class="info">
-			                                    <div class="row">
-			                                        <div class="price col-md-12" style="text-align: center;">
-			                                            <h5 style="text-transform: uppercase; font-weight: 700;">{{$pr->name}}</h5>
-			                                            <h5 class="price-text-color">{{$pr->price}}</h5>
-			                                        </div>
-			                                    </div>
-			                                    <div class="separator clear-left">
-			                                        <p class="btn-add">
-			                                            <i class="fa fa-shopping-cart" style="color: #fff;"></i><a href="{{URL::route('add-to-cart',$pr->url)}}" class="hidden-sm">MUA NGAY</a></p>
-			                                        <p class="btn-details">
-			                                            <i class="fa fa-list" style="color: #fff;"></i><a href="{{url('/'.$pr["url"])}}" class="hidden-sm">XEM THÊM</a></p>
-			                                    </div>
-			                                    <div class="clearfix">
-			                                    </div>
-			                                </div>
-			                            </div>
-
+			                        	<div class="blog-new-item box-shadows">
+				                            <div class="col-item">
+				                                <div class="photo">
+				                                    <a id="{{$pr->id}}" class="product-view" href="{{url('/'.$pr["url"])}}"><img src="{{url('/uploads/images/products/'.$pr["image"])}}" alt="a" /></a>
+				                                </div>
+				                                <div class="info">
+				                                    <div class="row">
+				                                        <div class="price col-md-12" style="text-align: center;">
+				                                            <h5 style="text-transform: uppercase; font-weight: 700;">{{$pr->name}}</h5>
+				                                            <h5 class="price-text-color">{{$pr->price}}</h5>
+				                                        </div>
+				                                    </div>
+				                                    <div class="separator clear-left">
+				                                        <p class="btn-add">
+				                                            <i class="fa fa-shopping-cart" style="color: #fff;"></i><a href="{{URL::route('add-to-cart',$pr->url)}}" class="hidden-sm">MUA NGAY</a></p>
+				                                        <p class="btn-details">
+				                                            <i class="fa fa-list" style="color: #fff;"></i><a id="{{$pr->id}}" class="product-view" href="{{url('/'.$pr["url"])}}" class="hidden-sm">XEM THÊM</a></p>
+				                                    </div>
+				                                    <div class="clearfix">
+				                                    </div>
+				                                </div>
+				                            </div>
+										</div>
 			                        </div>
 		                        @endif
 		                    @endforeach
@@ -114,31 +115,33 @@
 												$user = App\User::where('id',$blog->user_id)->get()->first();
 											?>
 											<div class="blog-new-item box-shadows">
-												<div class="row"> 
-								                    <div class="col-xs-12 col-sm-12 col-md-12">
-								                        <a href="{{url('/'.$blog->url)}}">
-								                            <img src="{{url('/uploads/images/blogs/'.$blog["image"])}}" alt="" class="img-responsive img-box img-thumbnail"> 
-								                        </a>
-								                    </div>
-								                    <br>
-								                    <br>
-								                    <div class="col-xs-12 col-sm-12 col-md-12">
-								                    	<h4><a href="{{url('/'.$blog->url)}}">{{$blog->title}}</a></h4>
-								                        <div class="list-group">
-								                            <div class="list-group-item">
-								                                <div class="row-content">
-								                                    <small>
-								                                        <i class="glyphicon glyphicon-time"></i>{{$blog->created_at}}<span class="twitter"> <i class="fa fa-twitter"></i> <a target="_blank" href="https://twitter.com/sintret" alt="sintret" title="sintret">{{$user->name}}</a></span>
-								                                        <br>
-								                                    </small>
-								                                </div>
-								                            </div>
-								                        </div>
-								                        <div class="read-more"><button class="btn-primary">Xem thêm</button></div>
-								                        <div class="clear"></div>
-								                        
-								                    </div> 
-								                </div>
+												<div class="col-item">
+													<div class="row"> 
+									                    <div class="col-xs-12 col-sm-12 col-md-12">
+									                        <a id="{{$blog->id}}" class="blog-view" href="{{url('/'.$blog->url)}}">
+									                            <img src="{{url('/uploads/images/blogs/'.$blog["image"])}}" alt="" class="img-responsive img-box img-thumbnail"> 
+									                        </a>
+									                    </div>
+									                    <br>
+									                    <br>
+									                    <div class="col-xs-12 col-sm-12 col-md-12">
+									                    	<h4><a id="{{$blog->id}}" class="blog-view" href="{{url('/'.$blog->url)}}">{{$blog->title}}</a></h4>
+									                        <div class="list-group">
+									                            <div class="list-group-item">
+									                                <div class="row-content">
+									                                    <small>
+									                                        <i class="glyphicon glyphicon-time"></i>{{$blog->created_at}}<span class="twitter"> <i class="fa fa-twitter"></i> <a target="_blank" href="#" alt="sintret" title="sintret">{{$user->name}}</a></span>
+									                                        <br>
+									                                    </small>
+									                                </div>
+									                            </div>
+									                        </div>
+									                        <a id="{{$blog->id}}" class="blog-view" href="{{url('/'.$blog->url)}}" ><div class="read-more"><button class="btn-primary">Xem thêm</button></div></a>
+									                        <div class="clear"></div>
+									                        
+									                    </div> 
+									                </div>
+									            </div>
 											</div>
 											<br>
 											<?php 

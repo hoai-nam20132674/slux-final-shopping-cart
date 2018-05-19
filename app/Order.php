@@ -18,6 +18,7 @@ class Order extends Model
 		$order->address = $request ->address;
 		$order->messages = $request->messages;
 		$order->price =$price;
+		$order->status =0;
 		$order->save();
 		foreach($content as $item){
 			$order_line = new Order_Line;
@@ -27,5 +28,9 @@ class Order extends Model
 			$order_line ->price = $item->quantity*$item->price;
 			$order_line->save();
 		}
+	}
+	public function deleteOrder($id){
+		$order = Order::where('id',$id)->get()->first();
+		$order -> delete();
 	}
 }

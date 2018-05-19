@@ -16,6 +16,7 @@ use App\Menu_Footer;
 use App\Menu_Sidebar;
 use App\Products_Repair;
 use App\Systems;
+use App\Order;
 use App\Http\Requests\addCategorieRequest;
 use App\Http\Requests\editCategorieRequest;
 use App\Http\Requests\editBlogRequest;
@@ -205,6 +206,22 @@ class adminController extends Controller
         $product_repair->editProductRepair($request,$id);
         return redirect('admin/getListProductsRepair')->with(['flash_level'=>'success','flash_message'=>'Sửa thông tin khách hàng thành công']);
     }
+
+
+
+    // Order Controller
+    public function getListOrders(){
+        $countBlogs = Blogs::select()->count();
+        $orders = Order::get();
+
+        return View('frontEndAdmin.page-content.listOrder',['countBlogs'=>$countBlogs,'orders'=>$orders]);
+    }
+    public function deleteOrder($id){
+        $order = new Order;
+        $order->deleteOrder($id);
+        return redirect()->route('getListOrders')->with(['flash_level'=>'success','flash_message'=>'Xóa đơn hàng thành công']);
+    }
+    // End Order Controll
 
 
     // Edit Seo

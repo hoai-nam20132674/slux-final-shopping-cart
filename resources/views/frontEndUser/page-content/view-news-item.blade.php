@@ -16,6 +16,8 @@
 					</div>
 					<br>
 					<div class="news-item-content">
+						<h1>{{$bl->title}}</h1>
+						<br>
 						{!!$bl->content!!}
 					</div>
 				</div>
@@ -68,7 +70,7 @@
 								                    <div class="col-sm-12 product-item" style="margin-bottom: 0px;">
 							                            <div class="col-item">
 							                                <div class="photo">
-							                                    <a href="{{url('/'.$pr["url"])}}"><img src="{{url('/uploads/images/products/'.$pr["image"])}}" alt="a" /></a>
+							                                    <a id="{{$pr->id}}" class="product-view" href="{{url('/'.$pr["url"])}}"><img src="{{url('/uploads/images/products/'.$pr["image"])}}" alt="a" /></a>
 							                                </div>
 							                                <div class="info">
 							                                    <div class="row">
@@ -79,9 +81,9 @@
 							                                    </div>
 							                                    <div class="separator clear-left">
 							                                        <p class="btn-add">
-							                                            <i class="fa fa-shopping-cart"></i><a href="http://www.jquery2dotnet.com" class="hidden-sm">Add to cart</a></p>
+							                                            <i class="fa fa-shopping-cart"></i><a href="{{URL::route('add-to-cart',$pr->url)}}" class="hidden-sm">MUA NGAY</a></p>
 							                                        <p class="btn-details">
-							                                            <i class="fa fa-list"></i><a href="http://www.jquery2dotnet.com" class="hidden-sm">More details</a></p>
+							                                            <i class="fa fa-list"></i><a id="{{$pr->id}}" class="product-view" href="{{url('/'.$pr["url"])}}" class="hidden-sm">XEM THÊM</a></p>
 							                                    </div>
 							                                    <div class="clearfix">
 							                                    </div>
@@ -104,6 +106,8 @@
 				</div>
 			</div>
 		</div>
+		<br>
+		<br>
 
 		<div class="row">
 			<div class="col-md-9">

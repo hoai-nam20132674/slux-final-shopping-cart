@@ -53,10 +53,10 @@
 											<span class="qt">{{$item->quantity}}</span>
 											<span id="{{$item->id}}" class="qt-plus">+</span>
 											<h2 class="full-price">
-												{{$item->price*$item->quantity}}
+												{{$item->price*$item->quantity}}<span>đ</span>
 											</h2>
 											<h2 class="price">
-												{{$item->price}}
+												{{$item->price}}<span>đ</span>
 											</h2>
 											
 										</footer>

@@ -7,9 +7,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>{{$seo->title}}</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="{{$seo->seo_description}}" />
-	<meta name="keywords" content="{{$seo->seo_keyword}}" />
-	<meta name="author" content="Cuong.vn" />
+	<meta name="description" content="{{$seo->seo_description}}"/>
+	<meta name="keywords" content="{{$seo->seo_keyword}}"/>
+	<meta name="author" content="Cuong.vn"/>
 
   	<!-- Facebook and Twitter integration -->
 	<meta property="og:title" content="{{$seo->title}}"/>
@@ -17,11 +17,12 @@
 	<meta property="og:url" content="{{url('/'.$seo->url)}}"/>
 	<meta property="og:site_name" content="{{$system->site_name}}"/>
 	<meta property="og:description" content="{{$seo->seo_description}}"/>
-	<meta name="twitter:title" content="{{$seo->title}}" />
-	<meta name="twitter:image" content="{{$system->og_image}}" />
-	<meta name="twitter:url" content="{{url('/'.$seo->url)}}" />
-	<meta name="twitter:card" content="" />
-	<link rel="canonical" href="{{url()}}" />
+	<meta name="twitter:title" content="{{$seo->title}}"/>
+	<meta name="twitter:image" content="{{$system->og_image}}"/>
+	<meta name="twitter:url" content="{{url('/'.$seo->url)}}"/>
+	<meta name="twitter:card" content=""/>
+	<link rel="canonical" href="{{url()}}"/>
+	<meta property="og:locale" content="vi_VN"/>
 
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 	<link rel="shortcut icon" href="{{$system->logo_title}}">
@@ -52,10 +53,8 @@
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-	<!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"> -->
 	
 	<!--Add to cart-->
-	<!-- <link rel="stylesheet" href="{{asset('addCart/css/reset.css')}}"> -->
 	<link rel="stylesheet" href="{{asset('addCart/css/style.css')}}"> 
 	<!--End add to cart-->
 
@@ -279,6 +278,8 @@
 		<script type="text/javascript">
 	    	$("div.alert").delay(2000).slideUp();
 	    </script>
+	    <script type="text/javascript" src="{{asset('js/support-views.js')}}"></script>
+	    {!!$system->script!!}
 	</body>
 </html>
 

@@ -21,12 +21,12 @@
 							<div class="blog-item">
 								<div class="row"> 
 				                    <div class="col-xs-12 col-sm-3 col-md-3">
-				                        <a href="{{url('/'.$blog["url"])}}">
+				                        <a id="{{$blog->id}}" class="blog-view" id="{{$blog->id}}" class="blog-view"  href="{{url('/'.$blog["url"])}}">
 				                            <img src="{{url('/uploads/images/blogs/'.$blog["image"])}}" class="img-responsive img-box img-thumbnail"> 
 				                        </a>
 				                    </div> 
 				                    <div class="col-xs-12 col-sm-9 col-md-9">
-				                    	<h4><a href="{{url('/'.$blog["url"])}}">{{$blog->title}}</a></h4>
+				                    	<h4><a id="{{$blog->id}}" class="blog-view" id="{{$blog->id}}" class="blog-view" href="{{url('/'.$blog["url"])}}">{{$blog->title}}</a></h4>
 				                        <p>Naturally, we know where Bali's newest restaurants are and what to order, so give that private chef a rest and check out these spanking new haunts.</p>
 				                        <div class="list-group">
 				                            <div class="list-group-item">
@@ -41,7 +41,7 @@
 				                                </div>
 				                            </div>
 				                        </div>
-				                        <a href="{{url('/'.$blog["url"])}}"><div class="read-more"><button class="btn-primary">Xem thêm</button></div></a>
+				                        <a id="{{$blog->id}}" class="blog-view" id="{{$blog->id}}" class="blog-view" href="{{url('/'.$blog["url"])}}"><div class="read-more"><button class="btn-primary">Xem thêm</button></div></a>
 				                        <div class="clear"></div>
 				                       
 				                    </div> 
@@ -116,7 +116,7 @@
 									                    <div class="col-sm-12 product-item" style="margin-bottom: 0px;">
 								                            <div class="col-item">
 								                                <div class="photo">
-								                                    <a href="{{url('/'.$pr["url"])}}"><img src="{{url('/uploads/images/products/'.$pr["image"])}}" alt="a" /></a>
+								                                    <a id="{{$pr->id}}" class="product-view" href="{{url('/'.$pr["url"])}}"><img src="{{url('/uploads/images/products/'.$pr["image"])}}" alt="a" /></a>
 								                                </div>
 								                                <div class="info">
 								                                    <div class="row">
@@ -127,9 +127,9 @@
 								                                    </div>
 								                                    <div class="separator clear-left">
 								                                        <p class="btn-add">
-								                                            <i class="fa fa-shopping-cart"></i><a href="http://www.jquery2dotnet.com" class="hidden-sm">Add to cart</a></p>
+								                                            <i class="fa fa-shopping-cart"></i><a " href="{{URL::route('add-to-cart',$pr->url)}}" class="hidden-sm">MUA NGAY</a></p>
 								                                        <p class="btn-details">
-								                                            <i class="fa fa-list"></i><a href="http://www.jquery2dotnet.com" class="hidden-sm">More details</a></p>
+								                                            <i class="fa fa-list"></i><a href="{{url('/'.$pr["url"])}}" id="{{$pr->id}}" class="product-view href="http://www.jquery2dotnet.com" class="hidden-sm">XEM THÊN</a></p>
 								                                    </div>
 								                                    <div class="clearfix">
 								                                    </div>

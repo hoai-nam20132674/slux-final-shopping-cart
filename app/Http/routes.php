@@ -42,6 +42,8 @@ Route::get('shopping-cart/gio-hang',['as'=>'getCart','uses'=>'viewController@get
 Route::get('update-cart-add-item/{id}',['as'=>'updateCartAddItem','uses'=>'viewController@updateCartAddItem']);
 Route::get('update-cart-remove-item/{id}/{quantity}',['as'=>'updateCartRemoveItem','uses'=>'viewController@updateCartRemoveItem']);
 Route::get('remove-item/{id}',['as'=>'removeItem','uses'=>'viewController@removeItem']);
+Route::get('support-view-product/{id}',['as'=>'support-view-product','uses'=>'viewController@supportViewProduct']);
+Route::get('support-view-blog/{id}',['as'=>'support-view-blog','uses'=>'viewController@supportViewBlog']);
 Route::post('postAddOrder',['as'=>'postAddOrder','uses'=>'viewController@postAddOrder']);
 
 Route::get('/login/admin-master', ['as'=>'getLogin','uses'=>'Auth\AuthController@getLogin']);
@@ -76,6 +78,9 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
 	Route::get('editProductRepair/{id}',['as'=>'editProductRepair','uses'=>'adminController@editProductRepair']);
 	Route::post('postEditProductRepair/{id}',['as'=>'postEditProductRepair','uses'=>'adminController@postEditProductRepair']);
 	Route::get('deleteProductRepair/{id}',['as'=>'deleteProductRepair','uses'=>'adminController@deleteProductRepair']);
+
+	Route::get('getListOrders',['as'=>'getListOrders','uses'=>'adminController@getListOrders']);
+	Route::get('deleteOrder/{id}',['as'=>'deleteOrder','uses'=>'adminController@deleteOrder']);
 
 	Route::get('systems-information',['as'=>'editSystems','uses'=>'adminController@editSystems']);
 	Route::post('postEditSystems',['as'=>'postEditSystems','uses'=>'adminController@postEditSystems']);

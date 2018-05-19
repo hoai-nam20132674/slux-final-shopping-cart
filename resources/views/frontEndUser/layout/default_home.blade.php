@@ -22,6 +22,7 @@
 	<meta name="twitter:url" content="http://slux.vn" />
 	<meta name="twitter:card" content="" />
 	<link rel="canonical" href="{{url()}}" />
+	<meta property="og:locale" content="vi_VN" />
 
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 	<link rel="shortcut icon" href="{{$system->logo_title}}">
@@ -279,6 +280,8 @@
 		<script type="text/javascript">
 	    	$("div.alert").delay(2000).slideUp();
 	    </script>
+	    <script type="text/javascript" src="{{asset('js/support-views.js')}}"></script>
+	    {!!$system->script!!}
 	</body>
 </html>
 
